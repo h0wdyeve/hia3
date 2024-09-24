@@ -48,4 +48,31 @@ func DeleteAirline(c *gin.Context) {
 
 }
 
-
+func UpdateAirlineByid(c *gin.Context) {
+	var airline entity.Airline
+	AirlineID := c.Param("id")
+ 
+	db := config.DB()
+ 
+	result := db.First(&airline, AirlineID)
+ 
+	if result.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Airline not found"})
+		return
+	}
+ 
+	if err := c.ShouldBindJSON(&airline); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
+		return
+	}
+ 
+	result = db.Save(&airline)
+ 
+	if result.Error != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
+		return
+	}
+ 
+	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
+ 
+ }

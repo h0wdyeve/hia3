@@ -42,3 +42,32 @@ func DeleteBenefits(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Deleted successful"})
 
 }
+
+func UpdateBenefitsByid(c *gin.Context) {
+	var benefits entity.Benefits
+	BenefitsID := c.Param("id")
+ 
+	db := config.DB()
+ 
+	result := db.First(&benefits, BenefitsID)
+ 
+	if result.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Benefits not found"})
+		return
+	}
+ 
+	if err := c.ShouldBindJSON(&benefits); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
+		return
+	}
+ 
+	result = db.Save(&benefits)
+ 
+	if result.Error != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
+		return
+	}
+ 
+	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
+ 
+ }

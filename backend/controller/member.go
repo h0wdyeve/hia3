@@ -9,16 +9,12 @@ import (
 
 func GetAllMember(c *gin.Context) {
 	var Member []entity.Member
-	db := config.DB()
 
-	results := db.Select("id, Email, Password, FirstName, LastName, BirthDay, Gender, TotalPoint").Find(&Member)  //อีฟแก้เอานะเราไม่รู้ต้องเอาไรบ้าง
-
-	if results.Error != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": results.Error.Error()})
+	if err := config.DB().Preload("Member").Find(&Member).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-
-	c.JSON(http.StatusOK, Member)
+	c.JSON(http.StatusOK, gin.H{"data": Member})
 }
 
 func GetMemberByID(c *gin.Context) {
@@ -72,50 +68,3 @@ func UpdatePoint(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
 }
-
-
-func UpdateMovieByid(c *gin.Context) {
-
-
-	var movie entity.Movie
- 
- 
-	MovieID := c.Param("id")
- 
- 
-	db := config.DB()
- 
-	result := db.First(&movie, MovieID)
- 
-	if result.Error != nil {
- 
-		c.JSON(http.StatusNotFound, gin.H{"error": "NameMovie not found"})
- 
-		return
- 
-	}
- 
- 
-	if err := c.ShouldBindJSON(&movie); err != nil {
- 
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
- 
-		return
- 
-	}
- 
- 
-	result = db.Save(&movie)
- 
-	if result.Error != nil {
- 
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
- 
-		return
- 
-	}
- 
- 
-	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
- 
- }

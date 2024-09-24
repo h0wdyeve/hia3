@@ -25,10 +25,12 @@ func main() {
 	r.GET("/airlines", controller.GetAllAirline)
 	r.GET("/airlines/:id", controller.GetAirlineByID)
 	r.DELETE("/airlines/:id", controller.DeleteAirline)
+	r.PUT("/airlines/:id" , controller.UpdateAirlineByid)
 
 	r.GET("/benefits", controller.GetAllBenefits)
 	r.GET("/benefits/:id", controller.GetBenefitsByID)
 	r.DELETE("/benefits/:id", controller.DeleteBenefits)
+	r.PUT("/benefits/:id" , controller.UpdateBenefitsByid)
 
 	r.GET("/member", controller.GetAllMember)
 	r.GET("/member/:id", controller.GetMemberByID)
