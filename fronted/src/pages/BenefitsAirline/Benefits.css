@@ -1,0 +1,266 @@
+
+   :root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+      "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+      "Source Han Sans CN", sans-serif;
+  }
+  
+  .main-container {
+    overflow: hidden;
+  }
+  
+  .main-container,
+  .main-container * {
+    box-sizing: border-box;
+  }
+  
+  input,
+  select,
+  textarea,
+  button {
+    outline: 0;
+  }
+  
+  .main-container {
+    position: relative;
+    width: 100%;
+    height: 1187px;
+    margin: 0 auto;
+    background: #ffffff;
+    overflow: hidden;
+  }
+  .flex-row {
+    position: relative;
+    width: 100%;
+    height: 312px;
+    margin: 0 0 0 0;
+    z-index: 10;
+  }
+  .rectangle {
+    
+    position: center;
+    width: 100%;
+    height: 60%;
+    top: 10;
+    left: 0;
+    background: #69abc1;
+    z-index: 10;
+  }
+  
+  .logo {
+    width: 5%;
+    height: 31%;
+    left: 5%;
+    top: 10%;
+    position: absolute;
+  }
+   
+  .rectangle-1 button {
+    position: absolute;
+    width: 7%;
+    height: 17%;
+    top: 17%;
+    left: 15%;
+    z-index: 23;
+    border-radius: 9.38px;
+    color: #5f212e;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: Bree-Serif;
+    font-size: 24px;
+  }
+
+  .rectangle-2 button {
+    position: absolute;
+    width: 7%;
+    height: 17%;
+    top: 17%;
+    left: 27%;
+    z-index: 20;
+    border-radius: 9.38px;
+    color: #5f212e;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: Bree-Serif;
+    font-size: 24px;
+  }
+
+  .rectangle-3 button {
+    position: absolute;
+    width: 7%;
+    height: 17%;
+    top: 17%;
+    left: 39%;
+    z-index: 17;
+    border-radius: 9.38px;
+    color: #5f212e;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: Bree-Serif;
+    font-size: 24px;
+  }
+
+  .rectangle-4 button {
+    position: absolute;
+    width: 7%;
+    height: 17%;
+    top: 17%;
+    left: 51%;
+    z-index: 14;
+    border-radius: 9.38px;
+    color: #5f212e;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: Bree-Serif;
+    font-size: 24px;
+  }
+  
+  .rectangle-7 {
+    position: absolute;
+    width: 100%;
+    height: 60%;
+    top: 50%;
+    left: 0;
+    background: #5f212e;
+    z-index: 8;
+  }
+  .select-airline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 65px;
+    top: 33%;
+    left: 38%;
+    color: #ffffff;
+    font-family: Bree-Serif;
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 64.752px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 9;
+  }
+  .flex-row-ff {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1243px;
+    height: 259px;
+    margin: 11% 0 0 23%;
+    /* z-index: 7; */
+    gap: 10%; 
+  }
+
+  .logoAA {
+    width: 30%;
+    height: 130%;
+  }
+
+  .logoNA {
+    width: 30%;
+    height: 130%;
+  }
+
+  .logoTA {
+    width: 30%;
+    height: 130%;
+  }
+
+  .logoVJ {
+    width: 30%;
+    height: 130%;
+  }
+  /* .rectangle-8 {
+    flex-shrink: 0;
+    position: relative;
+    width: 30%;
+    height: 130%;
+    background: #d8d1be;
+    z-index: 7;
+  }
+  .rectangle-9 {
+    flex-shrink: 0;
+    position: relative;
+    width: 30%;
+    height: 130%;
+    background: #d8d1be;
+    z-index: 3;
+  }
+  .rectangle-a {
+    flex-shrink: 0;
+    position: relative;
+    width: 30%;
+    height: 130%;
+    background: #d8d1be;
+    z-index: 5;
+  }
+  .rectangle-b {
+    flex-shrink: 0;
+    position: relative;
+    width: 30%;
+    height: 130%;
+    background: #d8d1be;
+    z-index: 1;
+  } */
+  .flex-row-fb {
+    font-family: Bree-Serif;
+    display: flex;
+    align-items: center;
+    width: 85.5%;
+    height: 33px;
+    margin: 5% 0 0 17.5%;
+    z-index: 6;
+    gap: 15.5%;
+  }
+  .airline-1 {
+    font-family: Bree-Serif;
+    font-weight: bold;
+    color: #6E2B32;
+    font-size: 35px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .airline-2 {
+    font-family: Bree-Serif;
+    font-weight: bold;
+    color: #6E2B32;
+    font-size: 35px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .airline-3 {
+    font-family: Bree-Serif;
+    font-weight: bold;
+    color: #6E2B32;
+    font-size: 35px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .airline-4 {
+    font-family: Bree-Serif;
+    font-weight: bold;
+    color: #6E2B32;
+    font-size: 35px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    margin-left: 2%;
+  }
+  @font-face {
+    font-family: Bree-Serif;
+    src: url(./assets/BreeSerif-Regular.ttf);
+  }
+  
