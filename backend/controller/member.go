@@ -11,7 +11,7 @@ func GetAllMember(c *gin.Context) {
 	var Member []entity.Member
 	db := config.DB()
 
-	results := db.Select("id, Package_name, Price, Duration").Find(&Member)  //อีฟแก้เอานะเราไม่รู้ต้องเอาไรบ้าง
+	results := db.Select("id, Email, Password, FirstName, LastName, BirthDay, Gender, TotalPoint").Find(&Member)  //อีฟแก้เอานะเราไม่รู้ต้องเอาไรบ้าง
 
 	if results.Error != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": results.Error.Error()})
@@ -46,3 +46,76 @@ func DeleteMember(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"message": "Deleted successful"})
 
 }
+
+func UpdatePoint(c *gin.Context) {
+	var point entity.Member
+
+	MemberID := c.Param("id")
+
+	db := config.DB()
+	result := db.First(&point, MemberID)
+	if result.Error != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "id not found"})
+		return
+	}
+
+	if err := c.ShouldBindJSON(&point); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
+		return
+	}
+
+	result = db.Save(&point)
+	if result.Error != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
+}
+
+
+func UpdateMovieByid(c *gin.Context) {
+
+
+	var movie entity.Movie
+ 
+ 
+	MovieID := c.Param("id")
+ 
+ 
+	db := config.DB()
+ 
+	result := db.First(&movie, MovieID)
+ 
+	if result.Error != nil {
+ 
+		c.JSON(http.StatusNotFound, gin.H{"error": "NameMovie not found"})
+ 
+		return
+ 
+	}
+ 
+ 
+	if err := c.ShouldBindJSON(&movie); err != nil {
+ 
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request, unable to map payload"})
+ 
+		return
+ 
+	}
+ 
+ 
+	result = db.Save(&movie)
+ 
+	if result.Error != nil {
+ 
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
+ 
+		return
+ 
+	}
+ 
+ 
+	c.JSON(http.StatusOK, gin.H{"message": "Updated successful"})
+ 
+ }

@@ -33,6 +33,7 @@ func main() {
 	r.GET("/member", controller.GetAllMember)
 	r.GET("/member/:id", controller.GetMemberByID)
 	r.DELETE("/member/:id", controller.DeleteMember)
+	r.PATCH("/member", controller.UpdatePoint)
 
 	r.GET("/point", controller.GetAllPoint)
 	r.GET("/point/:id", controller.GetPointByID)
