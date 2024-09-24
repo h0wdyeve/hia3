@@ -8,27 +8,27 @@ import (
 )
 
 func GetAllMember(c *gin.Context) {
-	var Member []entity.Member
+	var members []entity.Member
 
-	if err := config.DB().Preload("Member").Find(&Member).Error; err != nil {
+	if err := config.DB().Find(&members).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{"data": Member})
+	c.JSON(http.StatusOK, gin.H{"data": members})
 }
 
 func GetMemberByID(c *gin.Context) {
-	var Member entity.Member
+	var members entity.Member
 	id := c.Param("id")
 
 	// ดึงข้อมูลจากฐานข้อมูลตาม ID
-	if err := config.DB().First(&Member, id).Error; err != nil {
+	if err := config.DB().First(&members, id).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Benefits not found"})
 		return
 	}
 
 	// ส่งข้อมูลกลับไปในรูป JSON
-	c.JSON(http.StatusOK, gin.H{"data": Member})
+	c.JSON(http.StatusOK, gin.H{"data": members})
 }
 
 func DeleteMember(c *gin.Context) {
