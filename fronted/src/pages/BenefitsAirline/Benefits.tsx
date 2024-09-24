@@ -1,6 +1,6 @@
 import React from 'react';
 import './Benefits.css';
-import LG from './assets/LG.png'
+import LGST from './assets/LGST.png'
 import Logo_AirAsia from './assets/Logo_AirAsia.png'
 import Logo_Nokair from './assets/Logo_Nokair.png'
 import Logo_ThaiAirways from './assets/Logo_ThaiAirways.png'
@@ -26,7 +26,7 @@ export default function Benefits() {
     <div className='main-container'>
       <div className='flex-row'>
         <div className='rectangle'>
-          <img className="logo" src={LG} alt="logo" />
+          <img className="logo" src={LGST} alt="logo" />
             <div className="rectangle-1">
               <button>Home</button>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Benefits3_1_1.css';
-import LG from './assets/LG.png'
+import LGST from './assets/LGST.png'
 import BKtoSM1 from './assets/BKtoSM1.jpeg'
 import BKtoSM2 from './assets/BKtoSM2.jpg'
 import BKtoSM3 from './assets/BKtoSM3.jpg'
@@ -35,7 +35,7 @@ const Benefits3_1_1 = () => {
   return (
     <div className="airline-selection">
       <header className="header-bar">
-        <img className="head-logo" src={LG} alt="logo" />
+        <img className="head-logo" src={LGST} alt="logo" />
         <div className="navbar-container">
           <div className="navbar1">
             <button>Home</button>

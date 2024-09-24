@@ -1,6 +1,6 @@
 // import React from 'react';
 import './Benefits2_1.css';
-import LG from './assets/LG.png'
+import LGST from './assets/LGST.png'
 import Logo_AirAsia from './assets/Logo_AirAsia.png'
 import Logo_Nokair from './assets/Logo_Nokair.png'
 import Logo_ThaiAirways from './assets/Logo_ThaiAirways.png'
@@ -55,7 +55,7 @@ const Benefits2_1 = () => {
     <div>
       {/* Header */}
       <div className="header">
-        <img className="logo2_1" src={LG} alt="logo" />
+        <img className="logo2_1" src={LGST} alt="logo" />
         <div className="bum1">
           <button>Home</button>
         </div>
