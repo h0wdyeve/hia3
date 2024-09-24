@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/sa67-lab5/entity"
+	"github.com/hia3/backend/entity"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
