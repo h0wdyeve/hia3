@@ -164,3 +164,10 @@ async function DeleteBenefits(id: Number | undefined) {
     return res;
   }
 
+export {
+  GetAllMember, GetMemberByID, DeleteMember, UpdatePoints,
+
+  GetAllAirline, GetAirlineByID, DeleteAirline,
+
+  GetAllBenefits, GetBenefitsByID, DeleteBenefits,
+};
