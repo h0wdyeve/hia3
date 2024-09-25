@@ -13,6 +13,7 @@ type Benefits struct {
 	Class			string
 	Trip			string
 	Type			string
+	Img				string
 
 	AirlineID *uint
 	Airline Airline `gorm:"foreignKey:AirlineID"`

@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios'; //เชื่อมกับ Backend
 import {AirlineInterface} from '../../interfaces/BenefitsPackage'
 // import { GetAllAirline } from '../../services';
+
 export default function Benefits() {
   const navigate = useNavigate();
 
@@ -71,15 +72,15 @@ export default function Benefits() {
         <img className="logoTA" src={Logo_ThaiAirways} alt="logoTA" onClick={handleBenefits2Click} />
         <img className="logoVJ" src={Logo_Vietjet} alt="logoVJ" onClick={handleBenefits2Click} />
       </div>
-        <div className='flex-row-fb'>
-          {Array.isArray(Airlines) && Airlines.map((Airlines, index) => (
-            <div key={index} className="selectAirline-card">
-              <div className='airline-1' onClick={handleBenefits2Click}>
-                {Airlines.AirlineName}
-              </div>
+      <div className='flex-row-fb'>
+        {Array.isArray(Airlines) && Airlines.map((Airlines, index) => (
+          <div key={index} className="selectAirline-card">
+            <div className='airline-1' onClick={handleBenefits2Click}>
+              {Airlines.AirlineName}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

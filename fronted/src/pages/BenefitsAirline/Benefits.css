@@ -150,66 +150,51 @@
     height: 259px;
     margin: 11% 0 0 23%;
     /* z-index: 7; */
-    gap: 10%; 
+    gap: 130px; 
   }
 
   .logoAA {
-    width: 30%;
-    height: 130%;
-    display: auto;
-    margin-left: 300px;
+    width: 300px;
+    height: 300px;
+    /* display: auto; */
+    margin-left: 50px;
   }
+  .logoAA:hover {
+    transform: scale(1.05); 
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
 
   .logoNA {
-    width: 30%;
-    height: 130%;
+    width: 300px;
+    height: 300px;
+  }
+  .logoNA:hover {
+    transform: scale(1.05); 
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
   }
 
   .logoTA {
-    width: 30%;
-    height: 130%;
+    width: 300px;
+    height: 300px;
+  }
+  .logoTA:hover {
+    transform: scale(1.05); 
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
   }
 
   .logoVJ {
-    width: 30%;
-    height: 130%;
+    width: 300px;
+    height: 300px;
   }
-  /* .rectangle-8 {
-    flex-shrink: 0;
-    position: relative;
-    width: 30%;
-    height: 130%;
-    background: #d8d1be;
-    z-index: 7;
+  .logoVJ:hover {
+    transform: scale(1.05); 
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
   }
-  .rectangle-9 {
-    flex-shrink: 0;
-    position: relative;
-    width: 30%;
-    height: 130%;
-    background: #d8d1be;
-    z-index: 3;
-  }
-  .rectangle-a {
-    flex-shrink: 0;
-    position: relative;
-    width: 30%;
-    height: 130%;
-    background: #d8d1be;
-    z-index: 5;
-  }
-  .rectangle-b {
-    flex-shrink: 0;
-    position: relative;
-    width: 30%;
-    height: 130%;
-    background: #d8d1be;
-    z-index: 1;
-  } */
+
   .airline-1 {
     font-family: Bree-Serif;
     font-weight: bold;
-    color: #ec0920;
+    color: #5f212e;
     font-size: 35px;
     display: auto;
     align-items: flex-start;
@@ -224,9 +209,9 @@
     align-items: center;
     width: 85.5%;
     height: 33px;
-    margin: 5% 0 0 17.5%;
+    margin: 5% 0 0 450px;
     z-index: 6;
-    gap: 15.5%;
+    gap: 220px;
   }
   
   /* .selectAirline-card{
@@ -256,7 +241,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-  .airline-2 {
+  /* .airline-2 {
     font-family: Bree-Serif;
     font-weight: bold;
     color: #6E2B32;
@@ -289,7 +274,7 @@
     flex-shrink: 0;
     position: relative;
     margin-left: 2%;
-  }
+  } */
   @font-face {
     font-family: Bree-Serif;
     src: url(./BreeSerif-Regular.ttf);

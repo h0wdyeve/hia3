@@ -10,10 +10,7 @@ export interface AdminInterface {
 export interface AirlineInterface {
     ID?: number;
     AirlineName?: string;
-    Movie_poster?: string;
-    Movie_information?: string;
-    Movie_video?: string;
-    Movie_length?: string;
+    
 }
 
 export interface BenefitsInterface {
@@ -29,6 +26,7 @@ export interface BenefitsInterface {
     Type?: string;
     AirlineID?: number;
     AdminID?: number;
+    Img?: string;
 }
 
 export interface MemberInterface {

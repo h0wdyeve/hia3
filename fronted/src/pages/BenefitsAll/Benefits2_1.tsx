@@ -1,4 +1,4 @@
-// import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Benefits2_1.css';
 import LGST from '../../assets/LGST.png';
 import Logo_AirAsia from '../../assets/Logo_AirAsia.png';
@@ -15,7 +15,8 @@ import BKtoCH1 from '../../assets/BKtoCH1.jpg';
 import BKtoST1 from '../../assets/BKtoST1.jpg';
 import CHtoKB1 from '../../assets/CHtoKB1.jpg';
 import { useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
+import axios from 'axios'; //เชื่อมกับ Backend
+import { BenefitsInterface } from '../../interfaces/BenefitsPackage'
 
 
 const Benefits2_1 = () => {
@@ -37,19 +38,37 @@ const Benefits2_1 = () => {
     navigate(`/benefits3-details/${flightId}`); // เปลี่ยนหน้าไปตาม flightId
   };
 
-  const [selectedAirline, setSelectedAirline] = useState<number>(1);
+  // const [selectedAirline, setSelectedAirline] = useState<number>(1);
+  // const airlines = ['Airline 1', 'Airline 2', 'Airline 3', 'Airline 4'];
+  const [Benefits, setBenefits] = useState<BenefitsInterface[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const airlines = ['Airline 1', 'Airline 2', 'Airline 3', 'Airline 4'];
-  const flights = [
-    { route: 'Bangkok (Suvarnabhumi) - Samui', price: '6,500 P', img: BKtoSM1, id: 1 },
-    { route: 'Bangkok (Suvarnabhumi) - Maldives', price: '14,000 P', img: BKtoMD1, id: 2 },
-    { route: 'Bangkok (Suvarnabhumi) - Lampang', price: '5,000 P', img: BKtoLP1, id: 3 },
-    { route: 'Bangkok (Suvarnabhumi) - Trat', price: '5,000 P', img: BKtoT1, id: 4 },
-    { route: 'Bangkok (Suvarnabhumi) - Phuket', price: '5,000 P', img: BKtoPK1, id: 5 },
-    { route: 'Bangkok (Suvarnabhumi) - Chiang Mai', price: '5,000 P', img: BKtoCH1, id: 6 },
-    { route: 'Bangkok (Suvarnabhumi) - Sukhothai', price: '5,000 P', img: BKtoST1, id: 7 },
-    { route: 'Chiang Mai - Krabi', price: '9,000 P', img: CHtoKB1, id: 8 },
-  ];
+  useEffect(() => {
+    const fetchBenefits = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/benefits');
+        console.log(response.data); // Check what data you receive
+        setBenefits(response.data.data);
+      } catch (error) {
+        console.error("Error fetching flights data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBenefits();
+  }, []);
+
+  // const flights = [
+  //   { route: 'Bangkok (Suvarnabhumi) - Samui', price: '6,500 P', img: BKtoSM1, id: 1 },
+  //   { route: 'Bangkok (Suvarnabhumi) - Maldives', price: '14,000 P', img: BKtoMD1, id: 2 },
+  //   { route: 'Bangkok (Suvarnabhumi) - Lampang', price: '5,000 P', img: BKtoLP1, id: 3 },
+  //   { route: 'Bangkok (Suvarnabhumi) - Trat', price: '5,000 P', img: BKtoT1, id: 4 },
+  //   { route: 'Bangkok (Suvarnabhumi) - Phuket', price: '5,000 P', img: BKtoPK1, id: 5 },
+  //   { route: 'Bangkok (Suvarnabhumi) - Chiang Mai', price: '5,000 P', img: BKtoCH1, id: 6 },
+  //   { route: 'Bangkok (Suvarnabhumi) - Sukhothai', price: '5,000 P', img: BKtoST1, id: 7 },
+  //   { route: 'Chiang Mai - Krabi', price: '9,000 P', img: CHtoKB1, id: 8 },
+  // ];
 
   return (
     <div>
@@ -73,10 +92,10 @@ const Benefits2_1 = () => {
       {/* Airline Selector */}
       {/* const airlines = ['Airline 1', 'Airline 2', 'Airline 3', 'Airline 4']; */}
       <div className="airline-container">
-        <img className="logoAA2" src={Logo_AirAsia} alt="logoAA" onClick={handleBenefits2Click}/>
-        <img className="logoNA2" src={Logo_Nokair} alt="logoNA" onClick={handleBenefits2Click}/>
-        <img className="logoTA2" src={Logo_ThaiAirways} alt="logoTA" onClick={handleBenefits2Click}/>
-        <img className="logoVJ2" src={Logo_Vietjet} alt="logoVJ" onClick={handleBenefits2Click}/>
+        <img className="logoAA2" src={Logo_AirAsia} alt="logoAA" onClick={handleBenefits2Click} />
+        <img className="logoNA2" src={Logo_Nokair} alt="logoNA" onClick={handleBenefits2Click} />
+        <img className="logoTA2" src={Logo_ThaiAirways} alt="logoTA" onClick={handleBenefits2Click} />
+        <img className="logoVJ2" src={Logo_Vietjet} alt="logoVJ" onClick={handleBenefits2Click} />
         {/* {airlines.map((airline, index) => (
           <div
             key={index}
@@ -86,26 +105,28 @@ const Benefits2_1 = () => {
         ))} */}
       </div>
       <div className="airline-text">
-          <span className="airline1">AirAsia</span>
-          <span className="airline2">Thai Airways</span>
-          <span className="airline3">NokAir</span>
-          <span className="airline4">Vietjet</span>
-        </div>
+        <span className="airline1">AirAsia</span>
+        <span className="airline2">Thai Airways</span>
+        <span className="airline3">NokAir</span>
+        <span className="airline4">Vietjet</span>
+      </div>
 
       {/* Flight List */}
       <div className="flight-grid">
-        {flights.map((flight) => (
-          <div className="flight-card" /*onClick={handleBenefits3Click}*/ onClick={() => handleBenefits3Click(flight.id)} key={flight.id}>
-            <div>
-              <img src={flight.img} alt="Flight" />
+        {Array.isArray(Benefits) && Benefits.map((benefits, index) => (
+          benefits.id == undefined ? (
+            <div key={index} className="flight-card" /*onClick={handleBenefits3Click}*/ onClick={() => handleBenefits3Click(benefits.id ?? 0)} >
+              <div>
+                <img src={benefits.Img} alt="Flight" />
+              </div>
+              <div className="route">{benefits.BenefitsName}</div>
+              {/* <img src={flight.img2} alt="logo" /> */}
+              <div className="a-price">
+                <img className="p2-icon" src={pointsicon} alt="icon" />
+                <div className="price"> {benefits.PointRequired}</div>
+              </div>
             </div>
-            <div className="route">{flight.route}</div>
-            {/* <img src={flight.img2} alt="logo" /> */}
-            <div className="a-price">
-              <img className="p2-icon" src={pointsicon} alt="icon" />
-              <div className="price"> {flight.price}</div>
-            </div>
-          </div>
+          ) : <div>Tawun</div>
         ))}
       </div>
     </div>
@@ -113,3 +134,30 @@ const Benefits2_1 = () => {
 };
 
 export default Benefits2_1;
+
+// {/* <div className='flex-row-fb'>
+//         {Array.isArray(Airlines) && Airlines.map((Airlines, index) => (
+//           <div key={index} className="selectAirline-card">
+//             <div className='airline-1' onClick={handleBenefits2Click}>
+//               {Airlines.AirlineName}
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+
+
+// <div className="flight-grid">
+//         {flights.map((flight) => (
+//           <div className="flight-card" /*onClick={handleBenefits3Click}*/ onClick={() => handleBenefits3Click(flight.id)} key={flight.id}>
+//             <div>
+//               <img src={flight.img} alt="Flight" />
+//             </div>
+//             <div className="route">{flight.route}</div>
+//             {/* <img src={flight.img2} alt="logo" /> */}
+//             <div className="a-price">
+//               <img className="p2-icon" src={pointsicon} alt="icon" />
+//               <div className="price"> {flight.price}</div>
+//             </div>
+//           </div>
+//         ))}
+//       </div> */}
