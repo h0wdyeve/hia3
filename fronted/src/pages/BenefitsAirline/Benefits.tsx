@@ -17,11 +17,11 @@ export default function Benefits() {
   };
 
   const handleBenefits2Click = () => {
-    navigate("`/Benefits2/${AirlineName}`");
+    navigate("/Benefits2");
   };
 
   const handleBenefits3Click = () => {
-    navigate("`/Benefits3-details/1`");
+    navigate("/Benefits3-details/1");
   };
 
   const [Airlines, setAirlines] = useState<AirlineInterface[]>([]);
@@ -32,7 +32,7 @@ export default function Benefits() {
       try {
         const response = await axios.get('http://localhost:8080/airlines');
         console.log(response.data); // Check what data you receive
-        setAirlines(response.data);
+        setAirlines(response.data.airlines);
       } catch (error) {
         console.error("Error fetching flights data:", error);
       } finally {

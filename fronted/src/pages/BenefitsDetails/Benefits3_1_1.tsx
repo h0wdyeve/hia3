@@ -78,12 +78,6 @@ const Benefits3_1_1 = () => {
               <div className={`bu-button ${selectedClass === 'Business' ? 'selected' : ''}`}>
                 <button onClick={() => setSelectedClass('Business')}>Business</button>
               </div>
-              {/* <div className="eco-button">
-                <button>Economy</button>
-              </div>
-              <div className="bu-button">
-                <button>Business</button>
-              </div> */}
             </div>
 
             <span className='trip'>Trip :</span>
@@ -91,15 +85,6 @@ const Benefits3_1_1 = () => {
               <div className={`ow-button ${selectedTrip === 'One Way' ? 'selected' : ''}`}>
                 <button onClick={() => setSelectedTrip('One Way')}>One Way</button>
               </div>
-              {/* <div className={`rt-button ${selectedTrip === 'Round Trip' ? 'selected' : ''}`}>
-                <button onClick={() => setSelectedTrip('Round Trip')}>Round Trip</button>
-              </div> */}
-              {/* <div className="ow-button">
-                <button>One Way</button>
-              </div>
-              <div className="rt-button">
-                <button>Round Trip</button>
-              </div> */}
             </div>
             <button className="redeem-button">Redeem benefits</button>
           </div>

@@ -210,7 +210,7 @@
     color: #ec0920;
     font-size: 35px;
     display: flex;
-    /* align-items: flex-start; */
+    align-items: flex-start;
     justify-content: center;
     flex-shrink: 0;
     position: relative;
@@ -239,18 +239,18 @@
   } */
   .selectAirline-card {
     background-color: #ffffff; /* สีพื้นหลังของการ์ด */
-    border: 1px solid #e0e0e0; /* ขอบการ์ด */
+    /* border: 1px solid #e0e0e0; */
     border-radius: 8px; /* ขอบมน */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* เงาให้ดูลึก */
-    padding: 16px; /* ระยะห่างภายใน */
-    margin: 8px; /* ระยะห่างระหว่างการ์ด */
-    transition: transform 0.2s, box-shadow 0.2s; /* การเปลี่ยนแปลงที่ราบรื่น */
-    cursor: pointer; /* แสดงว่าเป็นองค์ประกอบที่คลิกได้ */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    padding: 16px; 
+    margin: 8px; 
+    transition: transform 0.2s, box-shadow 0.2s; 
+    cursor: pointer; 
 }
 
 .selectAirline-card:hover {
-    transform: scale(1.05); /* ขยายขนาดเมื่อชี้เมาส์ */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเมื่อชี้เมาส์ */
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
   .airline-2 {
