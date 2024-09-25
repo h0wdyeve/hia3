@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-const PORT = "8000"
+const PORT = "8080"
 
 func main() {
 	// เริ่มต้นเชื่อมต่อกับฐานข้อมูล
