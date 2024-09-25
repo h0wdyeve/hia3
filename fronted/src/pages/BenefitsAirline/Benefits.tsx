@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Benefits.css';
-import LGST from './assets/LGST.png'
-import Logo_AirAsia from './assets/Logo_AirAsia.png'
-import Logo_Nokair from './assets/Logo_Nokair.png'
-import Logo_ThaiAirways from './assets/Logo_ThaiAirways.png'
-import Logo_Vietjet from './assets/Logo_Vietjet.png'
+import LGST from '../../assets/LGST.png';
+import Logo_AirAsia from '../../assets/Logo_AirAsia.png';
+import Logo_Nokair from '../../assets/Logo_Nokair.png';
+import Logo_ThaiAirways from '../../assets/Logo_ThaiAirways.png';
+import Logo_Vietjet from '../../assets/Logo_Vietjet.png';
 import { useNavigate } from "react-router-dom"
+
+import {AirlineInterface } from "../../interfaces/BenefitsPackage";
+import axios from 'axios'; //เชื่อมกับ Backend
 
 export default function Benefits() {
   const navigate = useNavigate();
@@ -21,6 +24,8 @@ export default function Benefits() {
   const handleBenefits3Click = () => {
     navigate("/Benefits3");
   };
+
+  const [Airlines, setAirlines] = useState<AirlineInterface[]>([]);
 
   return (
     <div className='main-container'>
@@ -51,10 +56,11 @@ export default function Benefits() {
         <img className="logoVJ" src={Logo_Vietjet} alt="logoVJ" onClick={handleBenefits2Click}/>
       </div>
       <div className='flex-row-fb'>
-        <span className='airline-1' onClick={handleBenefits2Click}>AirAsia</span>
-        <span className='airline-2'>Thai Airways</span>
-        <span className='airline-3'>NokAir</span>
-        <span className='airline-4'>Vietjet</span>
+      {Airlines.map((airline, index) => (
+        <div key={index} className="selectAirline-card">
+          <div className='airline-1' onClick={handleBenefits2Click}>{airline.AirlineName}</div>
+        </div>
+      ))}
       </div>
     </div>
   );

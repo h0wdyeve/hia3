@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './Benefits3_1_1.css';
-import LGST from './assets/LGST.png'
-import BKtoSM1 from './assets/BKtoSM1.jpeg'
-import BKtoSM2 from './assets/BKtoSM2.jpg'
-import BKtoSM3 from './assets/BKtoSM3.jpg'
-import pointsicon from './assets/pointsicon.png'
-import { useNavigate } from "react-router-dom"
+import LGST from '../../assets/LGST.png';
+import BKtoSM1 from '../../assets/BKtoSM1.jpeg';
+import BKtoSM2 from '../../assets/BKtoSM2.jpg';
+import BKtoSM3 from '../../assets/BKtoSM3.jpg';
+import pointsicon from '../../assets/pointsicon.png';
+import { useNavigate } from "react-router-dom";
 // import { useParams } from "react-router-dom";
 
 
