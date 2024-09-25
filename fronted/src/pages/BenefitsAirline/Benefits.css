@@ -156,6 +156,8 @@
   .logoAA {
     width: 30%;
     height: 130%;
+    display: auto;
+    margin-left: 300px;
   }
 
   .logoNA {
@@ -209,11 +211,12 @@
     font-weight: bold;
     color: #ec0920;
     font-size: 35px;
-    display: flex;
+    display: auto;
     align-items: flex-start;
     justify-content: center;
     flex-shrink: 0;
     position: relative;
+    
   }
   .flex-row-fb {
     font-family: Bree-Serif;
