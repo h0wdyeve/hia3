@@ -204,6 +204,17 @@
     background: #d8d1be;
     z-index: 1;
   } */
+  .airline-1 {
+    font-family: Bree-Serif;
+    font-weight: bold;
+    color: #ec0920;
+    font-size: 35px;
+    display: flex;
+    /* align-items: flex-start; */
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
   .flex-row-fb {
     font-family: Bree-Serif;
     display: flex;
@@ -214,17 +225,34 @@
     z-index: 6;
     gap: 15.5%;
   }
-  .airline-1 {
+  
+  /* .selectAirline-card{
     font-family: Bree-Serif;
     font-weight: bold;
-    color: #6E2B32;
+    color: #ec0920;
     font-size: 35px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-shrink: 0;
     position: relative;
-  }
+  } */
+  .selectAirline-card {
+    background-color: #ffffff; /* สีพื้นหลังของการ์ด */
+    border: 1px solid #e0e0e0; /* ขอบการ์ด */
+    border-radius: 8px; /* ขอบมน */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* เงาให้ดูลึก */
+    padding: 16px; /* ระยะห่างภายใน */
+    margin: 8px; /* ระยะห่างระหว่างการ์ด */
+    transition: transform 0.2s, box-shadow 0.2s; /* การเปลี่ยนแปลงที่ราบรื่น */
+    cursor: pointer; /* แสดงว่าเป็นองค์ประกอบที่คลิกได้ */
+}
+
+.selectAirline-card:hover {
+    transform: scale(1.05); /* ขยายขนาดเมื่อชี้เมาส์ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเมื่อชี้เมาส์ */
+}
+
   .airline-2 {
     font-family: Bree-Serif;
     font-weight: bold;
@@ -261,6 +289,7 @@
   }
   @font-face {
     font-family: Bree-Serif;
-    src: url(./assets/BreeSerif-Regular.ttf);
+    src: url(./BreeSerif-Regular.ttf);
   }
+
   

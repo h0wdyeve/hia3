@@ -5,12 +5,10 @@ import Logo_AirAsia from '../../assets/Logo_AirAsia.png';
 import Logo_Nokair from '../../assets/Logo_Nokair.png';
 import Logo_ThaiAirways from '../../assets/Logo_ThaiAirways.png';
 import Logo_Vietjet from '../../assets/Logo_Vietjet.png';
-import { useNavigate } from "react-router-dom"
-
-import { GetAllAirline } from "../../services/index";
-import { AirlineInterface } from "../../interfaces/BenefitsPackage";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios'; //เชื่อมกับ Backend
-
+import {AirlineInterface} from '../../interfaces/BenefitsPackage'
+// import { GetAllAirline } from '../../services';
 export default function Benefits() {
   const navigate = useNavigate();
 
@@ -19,66 +17,48 @@ export default function Benefits() {
   };
 
   const handleBenefits2Click = () => {
-    navigate("/Benefits2");
+    navigate("`/Benefits2/${AirlineName}`");
   };
 
   const handleBenefits3Click = () => {
-    navigate("/Benefits3");
+    navigate("`/Benefits3-details/1`");
   };
 
   const [Airlines, setAirlines] = useState<AirlineInterface[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // เรียก API เพื่อดึงข้อมูล flight
     const fetchAirlines = async () => {
       try {
-        const response = await axios.get('/airlines');
-        console.log(response.data); // ตรวจสอบข้อมูล
+        const response = await axios.get('http://localhost:8080/airlines');
+        console.log(response.data); // Check what data you receive
         setAirlines(response.data);
       } catch (error) {
         console.error("Error fetching flights data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchAirlines();
   }, []);
 
-  // useEffect(() => {
-  //   const Authorization = localStorage.getItem("token");
-  //   const Bearer = localStorage.getItem("token_type");
-
-  //   const requestOptions = {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `${Bearer} ${Authorization}`,
-  //     },
-  //   };
-
-  //   axios.get<AirlineInterface[]>('http://localhost:8000/airlines', requestOptions)
-  //     .then(response => {
-  //       setAirlines(response.data); // บันทึกข้อมูลลงใน state
-  //     }) 
-  //     .catch(error => {
-  //       console.error('Fetching is error!:', error.response ? error.response.data : error.message);
-  //     });
-  // }, []);
-
   return (
     <div className='main-container'>
       <div className='flex-row'>
         <div className='rectangle'>
           <img className="logo" src={LGST} alt="logo" />
-            <div className="rectangle-1">
-              <button>Home</button>
-            </div>
-            <div className="rectangle-2">
-              <button>Flight</button>
-            </div>
-            <div className="rectangle-3">
-              <button onClick={handleBenefitsClick}>Benefits</button>
-            </div>
-            <div className="rectangle-4">
-              <button>Help Center</button>
+          <div className="rectangle-1">
+            <button onClick={handleBenefitsClick}>Home</button>
+          </div>
+          <div className="rectangle-2">
+            <button>Flight</button>
+          </div>
+          <div className="rectangle-3">
+            <button onClick={handleBenefitsClick}>Benefits</button>
+          </div>
+          <div className="rectangle-4">
+            <button>Help Center</button>
           </div>
         </div>
         <div className='rectangle-7'>
@@ -86,20 +66,20 @@ export default function Benefits() {
         </div>
       </div>
       <div className='flex-row-ff'>
-        <img className="logoAA" src={Logo_AirAsia} alt="logoAA" onClick={handleBenefits2Click}/>
-        <img className="logoNA" src={Logo_Nokair} alt="logoNA" onClick={handleBenefits2Click}/>
-        <img className="logoTA" src={Logo_ThaiAirways} alt="logoTA" onClick={handleBenefits2Click}/>
-        <img className="logoVJ" src={Logo_Vietjet} alt="logoVJ" onClick={handleBenefits2Click}/>
+        <img className="logoAA" src={Logo_AirAsia} alt="logoAA" onClick={handleBenefits2Click} />
+        <img className="logoNA" src={Logo_Nokair} alt="logoNA" onClick={handleBenefits2Click} />
+        <img className="logoTA" src={Logo_ThaiAirways} alt="logoTA" onClick={handleBenefits2Click} />
+        <img className="logoVJ" src={Logo_Vietjet} alt="logoVJ" onClick={handleBenefits2Click} />
       </div>
-
-      <div className='flex-row-fb'>
-        {Array.isArray(Airlines) && Airlines.map((airline, index) => (
-          <div key={index} className="selectAirline-card">
-            <div className='airline-1' onClick={handleBenefits2Click}>{airline.AirlineName}</div>
-          </div>
-        ))}
-      </div>
-
+        <div className='flex-row-fb'>
+          {Array.isArray(Airlines) && Airlines.map((Airlines, index) => (
+            <div key={index} className="selectAirline-card">
+              <div className='airline-1' onClick={handleBenefits2Click}>
+                {Airlines.AirlineName}
+              </div>
+            </div>
+          ))}
+        </div>
     </div>
   );
 }
