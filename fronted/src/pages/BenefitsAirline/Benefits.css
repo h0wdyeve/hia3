@@ -148,9 +148,9 @@
     justify-content: center;
     width: 1243px;
     height: 259px;
-    margin: 11% 0 0 23%;
+    margin: 11% 0 0 22.5%;
     /* z-index: 7; */
-    gap: 130px; 
+    gap: 120px; 
   }
 
   .logoAA {
@@ -162,7 +162,7 @@
   .logoAA:hover {
     transform: scale(1.05); 
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
-}
+  }
 
   .logoNA {
     width: 300px;
@@ -183,6 +183,7 @@
   }
 
   .logoVJ {
+    margin-left: -25px;
     width: 300px;
     height: 300px;
   }
@@ -191,7 +192,7 @@
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
   }
 
-  .airline-1 {
+  .airline-n {
     font-family: Bree-Serif;
     font-weight: bold;
     color: #5f212e;
@@ -214,23 +215,12 @@
     gap: 220px;
   }
   
-  /* .selectAirline-card{
-    font-family: Bree-Serif;
-    font-weight: bold;
-    color: #ec0920;
-    font-size: 35px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-shrink: 0;
-    position: relative;
-  } */
   .selectAirline-card {
     background-color: #ffffff; /* สีพื้นหลังของการ์ด */
     /* border: 1px solid #e0e0e0; */
     border-radius: 8px; /* ขอบมน */
     /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-    padding: 16px; 
+    padding: 18px; 
     margin: 8px; 
     transition: transform 0.2s, box-shadow 0.2s; 
     cursor: pointer; 
@@ -241,40 +231,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-  /* .airline-2 {
-    font-family: Bree-Serif;
-    font-weight: bold;
-    color: #6E2B32;
-    font-size: 35px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-shrink: 0;
-    position: relative;
-  }
-  .airline-3 {
-    font-family: Bree-Serif;
-    font-weight: bold;
-    color: #6E2B32;
-    font-size: 35px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-shrink: 0;
-    position: relative;
-  }
-  .airline-4 {
-    font-family: Bree-Serif;
-    font-weight: bold;
-    color: #6E2B32;
-    font-size: 35px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-shrink: 0;
-    position: relative;
-    margin-left: 2%;
-  } */
   @font-face {
     font-family: Bree-Serif;
     src: url(./BreeSerif-Regular.ttf);

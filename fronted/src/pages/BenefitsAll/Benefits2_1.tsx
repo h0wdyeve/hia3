@@ -34,14 +34,13 @@ const Benefits2_1 = () => {
   //   navigate("/Benefits3");
   // };
 
-  const handleBenefits3Click = (flightId: number) => {
-    navigate(`/benefits3-details/${flightId}`); // เปลี่ยนหน้าไปตาม flightId
+  const handleBenefits3Click = (benefitsid: number) => {
+    navigate(`/benefits3-details/${benefitsid}`); // เปลี่ยนหน้าไปตาม flightId
   };
 
-  // const [selectedAirline, setSelectedAirline] = useState<number>(1);
-  // const airlines = ['Airline 1', 'Airline 2', 'Airline 3', 'Airline 4'];
   const [Benefits, setBenefits] = useState<BenefitsInterface[]>([]);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     const fetchBenefits = async () => {
@@ -59,17 +58,7 @@ const Benefits2_1 = () => {
     fetchBenefits();
   }, []);
 
-  // const flights = [
-  //   { route: 'Bangkok (Suvarnabhumi) - Samui', price: '6,500 P', img: BKtoSM1, id: 1 },
-  //   { route: 'Bangkok (Suvarnabhumi) - Maldives', price: '14,000 P', img: BKtoMD1, id: 2 },
-  //   { route: 'Bangkok (Suvarnabhumi) - Lampang', price: '5,000 P', img: BKtoLP1, id: 3 },
-  //   { route: 'Bangkok (Suvarnabhumi) - Trat', price: '5,000 P', img: BKtoT1, id: 4 },
-  //   { route: 'Bangkok (Suvarnabhumi) - Phuket', price: '5,000 P', img: BKtoPK1, id: 5 },
-  //   { route: 'Bangkok (Suvarnabhumi) - Chiang Mai', price: '5,000 P', img: BKtoCH1, id: 6 },
-  //   { route: 'Bangkok (Suvarnabhumi) - Sukhothai', price: '5,000 P', img: BKtoST1, id: 7 },
-  //   { route: 'Chiang Mai - Krabi', price: '9,000 P', img: CHtoKB1, id: 8 },
-  // ];
-
+  
   return (
     <div>
       {/* Header */}
@@ -96,13 +85,6 @@ const Benefits2_1 = () => {
         <img className="logoNA2" src={Logo_Nokair} alt="logoNA" onClick={handleBenefits2Click} />
         <img className="logoTA2" src={Logo_ThaiAirways} alt="logoTA" onClick={handleBenefits2Click} />
         <img className="logoVJ2" src={Logo_Vietjet} alt="logoVJ" onClick={handleBenefits2Click} />
-        {/* {airlines.map((airline, index) => (
-          <div
-            key={index}
-            className={selectedAirline === index + 1 ? 'active' : ''}
-            onClick={() => setSelectedAirline(index + 1)}
-          />
-        ))} */}
       </div>
       <div className="airline-text">
         <span className="airline1">AirAsia</span>
@@ -113,20 +95,22 @@ const Benefits2_1 = () => {
 
       {/* Flight List */}
       <div className="flight-grid">
-        {Array.isArray(Benefits) && Benefits.map((benefits, index) => (
-          benefits.id == undefined ? (
-            <div key={index} className="flight-card" /*onClick={handleBenefits3Click}*/ onClick={() => handleBenefits3Click(benefits.id ?? 0)} >
+        {Array.isArray(Benefits) && Benefits.map((benefits) => (
+          // benefits.id == undefined ? (
+          // {b_id.map((bid) => (
+            <div key={benefits.ID} className="flight-card" /*onClick={handleBenefits3Click}*/ onClick={() => handleBenefits3Click(benefits.ID)} >
               <div>
-                <img src={benefits.Img} alt="Flight" />
+                <img src={benefits.Img1} alt="Flight" />
               </div>
               <div className="route">{benefits.BenefitsName}</div>
               {/* <img src={flight.img2} alt="logo" /> */}
               <div className="a-price">
                 <img className="p2-icon" src={pointsicon} alt="icon" />
-                <div className="price"> {benefits.PointRequired}</div>
+                <div className="price"> {benefits.PointRequired} P</div>
               </div>
             </div>
-          ) : <div>Tawun</div>
+          // ))}
+          // ) : <div>Tawun</div>
         ))}
       </div>
     </div>
@@ -134,30 +118,3 @@ const Benefits2_1 = () => {
 };
 
 export default Benefits2_1;
-
-// {/* <div className='flex-row-fb'>
-//         {Array.isArray(Airlines) && Airlines.map((Airlines, index) => (
-//           <div key={index} className="selectAirline-card">
-//             <div className='airline-1' onClick={handleBenefits2Click}>
-//               {Airlines.AirlineName}
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-
-
-// <div className="flight-grid">
-//         {flights.map((flight) => (
-//           <div className="flight-card" /*onClick={handleBenefits3Click}*/ onClick={() => handleBenefits3Click(flight.id)} key={flight.id}>
-//             <div>
-//               <img src={flight.img} alt="Flight" />
-//             </div>
-//             <div className="route">{flight.route}</div>
-//             {/* <img src={flight.img2} alt="logo" /> */}
-//             <div className="a-price">
-//               <img className="p2-icon" src={pointsicon} alt="icon" />
-//               <div className="price"> {flight.price}</div>
-//             </div>
-//           </div>
-//         ))}
-//       </div> */}

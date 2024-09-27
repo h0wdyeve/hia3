@@ -75,7 +75,7 @@ export default function Benefits() {
       <div className='flex-row-fb'>
         {Array.isArray(Airlines) && Airlines.map((Airlines, index) => (
           <div key={index} className="selectAirline-card">
-            <div className='airline-1' onClick={handleBenefits2Click}>
+            <div className='airline-n' onClick={handleBenefits2Click}>
               {Airlines.AirlineName}
             </div>
           </div>

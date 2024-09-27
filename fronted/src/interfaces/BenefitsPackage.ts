@@ -10,11 +10,10 @@ export interface AdminInterface {
 export interface AirlineInterface {
     ID?: number;
     AirlineName?: string;
-    
 }
 
 export interface BenefitsInterface {
-    id?: number;
+    ID?: string;
     BenefitsName?: string;
     FlyingFrom?: string;
     GoingTo?: string;
@@ -23,10 +22,11 @@ export interface BenefitsInterface {
     Code?: string;
     Class?: string;
     Trip?: string;
-    Type?: string;
     AirlineID?: number;
     AdminID?: number;
-    Img?: string;
+    Img1?: string;
+    Img2?: string;
+    Img3?: string;
 }
 
 export interface MemberInterface {

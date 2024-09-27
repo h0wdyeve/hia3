@@ -67,11 +67,19 @@ body {
   width: 65px;
   height: 60px;
 }
+.logoAA2:hover {
+  transform: scale(1.05); 
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
 
 .logoNA2 {
   margin-top: 7px;
   width: 65px;
   height: 60px;
+}
+.logoNA2:hover {
+  transform: scale(1.05); 
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
 }
 
 .logoTA2 {
@@ -79,18 +87,26 @@ body {
   width: 65px;
   height: 60px;
 }
+.logoTA2:hover {
+  transform: scale(1.05); 
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
 
 .logoVJ2 {
   margin-top: 7px;
   width: 65px;
   height: 60px;
 }
+.logoVJ2:hover {
+  transform: scale(1.05); 
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
 
 .airline-text {
   margin-left: 17.5%;
   margin-top: -35px;
   display: flex;
-  gap: 370px;
+  gap: 364px;
   /* color: #6E2B32;
   font-weight: bold;
   font-family: Bree-Serif;
@@ -112,7 +128,7 @@ body {
   font-weight: bold;
   font-family: Bree-Serif;
   /* margin-top: 6%; */
-  margin-left: -1%;
+  margin-left: 0.2%;
   font-size: 23px;
 }
 
@@ -121,7 +137,7 @@ body {
   font-weight: bold;
   font-family: Bree-Serif;
   /* margin-top: 6%; */
-  margin-left: 1.5%;
+  margin-left: 1.8%;
   font-size: 23px;
 }
 
@@ -142,11 +158,11 @@ body {
   column-gap: -1%;
   row-gap: 3%;
   padding: 20px;
-  margin-left: 1.6%;
+  margin-left: 1.5%;
 }
 
 .flight-card {
-  width: 75%;
+  width: 77%;
   height: 90%;
   margin-top: 5%;
   background-color: white;
@@ -185,7 +201,7 @@ body {
 
 .flight-card .a-price .price {
   margin-left: 7%;
-  font-size: 21px;
+  font-size: 26px;
   color: #6E2B32;
   font-weight: bold;
   font-family: Bree-Serif;
@@ -196,5 +212,5 @@ body {
   font-weight: bold;
   font-family: Bree-Serif;
   margin-top: 6%;
-  font-size: 23px;
+  font-size: 25.5px;
 }
