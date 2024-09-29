@@ -35,7 +35,7 @@ func main() {
 	r.GET("/members", controller.GetAllMember)
 	r.GET("/members/:id", controller.GetMemberByID)
 	r.DELETE("/members/:id", controller.DeleteMember)
-	r.PATCH("/members/:id", controller.UpdatePoint)
+	r.PUT("/members/:id", controller.UpdatePoint)
 
 	r.GET("/point", controller.GetAllPoint)
 	r.GET("/point/:id", controller.GetPointByID)

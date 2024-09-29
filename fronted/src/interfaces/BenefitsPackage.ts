@@ -17,7 +17,7 @@ export interface BenefitsInterface {
     BenefitsName?: string;
     FlyingFrom?: string;
     GoingTo?: string;
-    PointRequired?: number;
+    PointRequired: number;
     Quantity?: number;
     Code?: string;
     Class?: string;
@@ -30,13 +30,13 @@ export interface BenefitsInterface {
 }
 
 export interface MemberInterface {
-    id?: number;
+    id: number;
     Email?: string;
     Password?: string;
     LastName?: string;
     BirthDay?: Date;
     Gender?: string;
-    TotalPoint?: number;
+    TotalPoint: number;
 }
 
 export interface PointCalInterface {

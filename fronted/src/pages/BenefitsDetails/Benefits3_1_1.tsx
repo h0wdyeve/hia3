@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './Benefits3_1_1.css';
 import LGST from '../../assets/LGST.png';
 import Logo_AirAsia from '../../assets/Logo_AirAsia.png';
-import BKtoSM1 from '../../assets/BKtoSM1.jpeg';
-import BKtoSM2 from '../../assets/BKtoSM2.jpg';
-import BKtoSM3 from '../../assets/BKtoSM3.jpg';
 import pointsicon from '../../assets/pointsicon.png';
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from 'axios'; //เชื่อมกับ Backend
 import { BenefitsInterface } from '../../interfaces/BenefitsPackage'
+import { MemberInterface } from '../../interfaces/BenefitsPackage'
 
 const Benefits3_1_1 = () => {
   const navigate = useNavigate();
@@ -26,21 +24,87 @@ const Benefits3_1_1 = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams<{ id: string }>();
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedBenefits, setSelectedBenefits] = useState<BenefitsInterface | null>(null);
+
+  const [TotalPoint, setTotalPoint] = useState<number>(0); // สามารถเป็น null ได้
+  const [member, setMember] = useState<MemberInterface | null>(null);
+
+
+  // useEffect(() => {
+  //   const fetchBenefits = async () => {
+  //     try {
+  //       const response = await axios.get(`http://localhost:8080/benefits/${id}`);
+  //       console.log(response.data);
+  //       setBenefits(response.data.data);
+  //     } catch (error) {
+  //       console.error("Error fetching flights data:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchBenefits();
+  // }, [id]);
+
   useEffect(() => {
     const fetchBenefits = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/benefits/${id}`);
-        console.log(response.data); // Check what data you receive
-        setBenefits(response.data.data);
+        const benefits = response.data.data;
+        console.log('PointRequired:', benefits.PointRequired); // ตรวจสอบค่า PointRequired
+        setBenefits(benefits);
+        // setBenefits(response.data.data);
       } catch (error) {
-        console.error("Error fetching flights data:", error);
-      } finally {
-        setLoading(false);
+        console.error("Error fetching benefits data:", error);
+      }
+    };
+
+    const fetchTotalPoints = async () => {
+      try {
+        const userResponse = await axios.get<MemberInterface>('http://localhost:8080/members/1'); // ดึงข้อมูลสมาชิก
+        console.log('API Response:', userResponse.data);
+        const totalPoint = userResponse.data.TotalPoint;
+        console.log('TotalPoint:', totalPoint); // ตรวจสอบค่า TotalPoint ที่ดึงมา
+        setTotalPoint(totalPoint); // ตั้งค่า totalPoint
+        // setTotalPoint(userResponse.data.TotalPoint); // ตั้งค่า totalPoint
+      } catch (error) {
+        console.error("Error fetching user points:", error);
       }
     };
 
     fetchBenefits();
+    fetchTotalPoints(); // ดึงแต้มสะสมของผู้ใช้เมื่อโหลดหน้า
+    setLoading(false); // เคลียร์ loading หลังจากดึงข้อมูลทั้งหมด
   }, [id]);
+
+  const handleRedeemClick = async (benefits: BenefitsInterface) => {
+    console.log('TotalPoint:', TotalPoint); // ตรวจสอบค่า TotalPoint ก่อนการแลก
+    console.log('PointRequired:', benefits.PointRequired);
+    if (TotalPoint !== undefined && benefits.PointRequired !== undefined && TotalPoint >= benefits.PointRequired) {
+      // หักแต้มออกจาก TotalPoint
+      const newTotalPoint = TotalPoint - benefits.PointRequired;
+      setTotalPoint(newTotalPoint);  // ตั้งค่า TotalPoint ใหม่
+
+      // อัปเดต TotalPoint ของสมาชิกในฐานข้อมูล
+      try {
+        await axios.put(`http://localhost:8080/members/UpdatePoint`, {
+          TotalPoint: newTotalPoint
+        });
+        setSelectedBenefits(benefits);
+        setIsPopupOpen(true);
+      } catch (error) {
+        console.error("Error updating total points:", error);
+      }
+    } else {
+      alert("You do not have enough points to redeem this benefit.");
+    }
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+    setSelectedBenefits(null);
+  };
 
   // const [selectedClass, setSelectedClass] = useState<string | null>(null); // ค่าเริ่มต้นคือ 'Economy'
   // const [selectedTrip, setSelectedTrip] = useState<string | null>(null); // ค่าเริ่มต้นคือ 'One Way'
@@ -96,7 +160,7 @@ const Benefits3_1_1 = () => {
               <div className="a-points">
                 <img className="p-icon" src={pointsicon} alt="icon" />
                 <span className="points">{Benefits.PointRequired} P</span>
-            </div>
+              </div>
 
               <span className='class'>Class : {Benefits.Class}</span>
               {/* <div className="class-class">
@@ -112,11 +176,23 @@ const Benefits3_1_1 = () => {
                   <button onClick={() => setSelectedTrip('One Way')}>One Way</button>
                 </div>
               </div> */}
-              <button className="redeem-button">Redeem benefits</button>
+              <button className="redeem-button" onClick={() => handleRedeemClick(Benefits)}>Redeem benefits</button>
             </div>
           </div>
         {/* ))} */}
       </div>
+
+      {isPopupOpen && selectedBenefits && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <h2>Redeem benefits successfull!</h2>
+            <p className='code'>This is your code : {selectedBenefits.Code}</p>
+            <p>*don't forget to save your Code</p>
+            <button onClick={handleClosePopup}>Close</button>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
