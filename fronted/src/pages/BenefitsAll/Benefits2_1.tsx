@@ -6,14 +6,6 @@ import Logo_Nokair from '../../assets/Logo_Nokair.png';
 import Logo_ThaiAirways from '../../assets/Logo_ThaiAirways.png';
 import Logo_Vietjet from '../../assets/Logo_Vietjet.png';
 import pointsicon from '../../assets/pointsicon.png';
-import BKtoSM1 from '../../assets/BKtoSM1.jpeg';
-import BKtoMD1 from '../../assets/BKtoMD1.jpg';
-import BKtoLP1 from '../../assets/BKtoLP1.jpeg';
-import BKtoT1 from '../../assets/BKtoT1.jpg';
-import BKtoPK1 from '../../assets/BKtoPK1.png';
-import BKtoCH1 from '../../assets/BKtoCH1.jpg';
-import BKtoST1 from '../../assets/BKtoST1.jpg';
-import CHtoKB1 from '../../assets/CHtoKB1.jpg';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'; //เชื่อมกับ Backend
 import { BenefitsInterface } from '../../interfaces/BenefitsPackage'
@@ -35,7 +27,7 @@ const Benefits2_1 = () => {
   // };
 
   const handleBenefits3Click = (benefitsid: number) => {
-    navigate(`/benefits3-details/${benefitsid}`); // เปลี่ยนหน้าไปตาม flightId
+    navigate(`/benefits3-details/${benefitsid}`); // เปลี่ยนหน้าไปตาม benefitsId
   };
 
   const [Benefits, setBenefits] = useState<BenefitsInterface[]>([]);

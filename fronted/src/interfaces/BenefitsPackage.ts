@@ -36,7 +36,7 @@ export interface MemberInterface {
     LastName?: string;
     BirthDay?: Date;
     Gender?: string;
-    TotalPoint: number;
+    TotalPoint?: number;
 }
 
 export interface PointCalInterface {

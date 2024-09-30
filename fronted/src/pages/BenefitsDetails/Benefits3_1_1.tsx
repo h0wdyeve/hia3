@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import axios from 'axios'; //เชื่อมกับ Backend
 import { BenefitsInterface } from '../../interfaces/BenefitsPackage'
 import { MemberInterface } from '../../interfaces/BenefitsPackage'
+import {GetMemberByID} from '../../services/index';
 
 const Benefits3_1_1 = () => {
   const navigate = useNavigate();
@@ -30,6 +31,13 @@ const Benefits3_1_1 = () => {
   const [TotalPoint, setTotalPoint] = useState<number>(0); // สามารถเป็น null ได้
   const [member, setMember] = useState<MemberInterface | null>(null);
 
+  
+  const getMember = async () => {
+    let res = await GetMemberByID("1");
+    if (res) {
+      setMember(res);
+    }
+  };
 
   // useEffect(() => {
   //   const fetchBenefits = async () => {
@@ -62,16 +70,16 @@ const Benefits3_1_1 = () => {
 
     const fetchTotalPoints = async () => {
       try {
-        const userResponse = await axios.get<MemberInterface>('http://localhost:8080/members/1'); // ดึงข้อมูลสมาชิก
-        console.log('API Response:', userResponse.data);
-        const totalPoint = userResponse.data.TotalPoint;
+        const userResponse = await axios.get<{ data: MemberInterface }>('http://localhost:8080/members/1');
+        console.log(userResponse.data.data); // ตรวจสอบค่า data
+        const totalPoint = userResponse.data.data.TotalPoint;
         console.log('TotalPoint:', totalPoint); // ตรวจสอบค่า TotalPoint ที่ดึงมา
-        setTotalPoint(totalPoint); // ตั้งค่า totalPoint
-        // setTotalPoint(userResponse.data.TotalPoint); // ตั้งค่า totalPoint
+        setTotalPoint(totalPoint!); // ตั้งค่า totalPoint ด้วยค่าที่ได้จาก API
       } catch (error) {
         console.error("Error fetching user points:", error);
       }
     };
+    
 
     fetchBenefits();
     fetchTotalPoints(); // ดึงแต้มสะสมของผู้ใช้เมื่อโหลดหน้า
@@ -79,10 +87,9 @@ const Benefits3_1_1 = () => {
   }, [id]);
 
   const handleRedeemClick = async (benefits: BenefitsInterface) => {
-    console.log('TotalPoint:', TotalPoint); // ตรวจสอบค่า TotalPoint ก่อนการแลก
-    console.log('PointRequired:', benefits.PointRequired);
+
     if (TotalPoint !== undefined && benefits.PointRequired !== undefined && TotalPoint >= benefits.PointRequired) {
-      // หักแต้มออกจาก TotalPoint
+      console.log("complete")
       const newTotalPoint = TotalPoint - benefits.PointRequired;
       setTotalPoint(newTotalPoint);  // ตั้งค่า TotalPoint ใหม่
 
@@ -91,6 +98,7 @@ const Benefits3_1_1 = () => {
         await axios.put(`http://localhost:8080/members/UpdatePoint`, {
           TotalPoint: newTotalPoint
         });
+        console.log("Complete2")
         setSelectedBenefits(benefits);
         setIsPopupOpen(true);
       } catch (error) {

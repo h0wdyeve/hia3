@@ -18,11 +18,11 @@ const requestOptions = {
 
 };
 
-async function GetAllMember(id: string) {
+async function GetAllMember() {
 
     return await axios
 
-        .get(`${apiUrl}/users/${id}`, requestOptions)
+        .get(`${apiUrl}/members/`, requestOptions)
 
         .then((res) => res)
 
@@ -34,7 +34,7 @@ async function GetMemberByID(id: string) {
 
     return await axios
 
-        .get(`${apiUrl}/Member/${id}`, requestOptions)
+        .get(`${apiUrl}/members/${id}`, requestOptions)
 
         .then((res) => res)
 

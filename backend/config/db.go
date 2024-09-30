@@ -119,7 +119,9 @@ func SetupDatabase() {
 
 	Member := []entity.Member{
 		{Email: "B6506407@g.sut.ac.th",Password:    hashedPassword , FirstName: "Nobpasin" , LastName: "Tumdee" ,BirthDay: "2003-06-26" , Gender: "Male", TotalPoint: 4500},
+		{Email: "B6506404@g.sut.ac.th",Password:    hashedPassword , FirstName: "Nobpa" , LastName: "Tumdee" ,BirthDay: "2003-06-26" , Gender: "Male", TotalPoint: 4500},
 	}
+
 	for _, pkg := range Member {
 		db.FirstOrCreate(&pkg,entity.Member{Email: pkg.Email})
 	}
